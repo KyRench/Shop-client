@@ -27,7 +27,7 @@ const DeviceItem = ({ device }) => {
             <Image width={18} height={18} src={star} />
           </div>
         </div>
-        <div>{device.price}</div>
+        <div>{device.price} руб.</div>
       </Card>
     </Col>
   );

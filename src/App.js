@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Context } from "./index";
 import AppRouter from "./components/AppRouter";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Navbar/NavBar";
 import { check } from "./http/userAPI";
 import { Spinner } from "react-bootstrap";
 
@@ -15,12 +15,12 @@ const App = observer(() => {
     check()
       .then((data) => {
         user.setUser(true);
-        user.setIsAuth(true);
+        user.setIsAuth(false);  // заменить на false
       })
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [user]);
 
   if (loadin) {
     return <Spinner animation={"grow"} />;
@@ -28,7 +28,7 @@ const App = observer(() => {
   
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar/>
       <AppRouter />
     </BrowserRouter>
   );
